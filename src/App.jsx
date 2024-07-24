@@ -10,7 +10,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch("data.json")
+    fetch("/data.json")
       .then((response) => response.json())
       .then((data) => {
         setItems(data);
@@ -70,16 +70,16 @@ function App() {
           {items.map((e, index) => (
             <div key={e.id}>
               <figure className="lg:w-64">
-                <img className="w-full rounded-2xl" src={`src/${e.image.tablet}`} alt="" />
+                <img className="w-full rounded-2xl" src={e.image.tablet} alt="" />
                 {amounts[index] > 0 ? (
                   <button className="text-white border-[1px] border-gray-500 rounded-full py-2 px-6 flex items-center font-semibold mx-auto translate-y-[-50%] bg-red-600 w-1/2 justify-between">
-                    <img onClick={() => decrement(index)} className="border-[1px] border-white rounded-full w-6 h-6 lg:w-4 lg:h-4 p-1" src="src/assets/images/icon-decrement-quantity.svg" alt="decrement" />
+                    <img onClick={() => decrement(index)} className="border-[1px] border-white rounded-full w-6 h-6 lg:w-4 lg:h-4 p-1" src="/assets/images/icon-decrement-quantity.svg" alt="decrement" />
                     {amounts[index]}
-                    <img onClick={() => increment(index)} className="border-[1px] border-white rounded-full w-6 h-6 lg:w-4 lg:h-4 p-1" src="src/assets/images/icon-increment-quantity.svg" alt="increment" />
+                    <img onClick={() => increment(index)} className="border-[1px] border-white rounded-full w-6 h-6 lg:w-4 lg:h-4 p-1" src="/assets/images/icon-increment-quantity.svg" alt="increment" />
                   </button>
                 ) : (
                   <button onClick={() => addCart(index)} className="bg-white border-[1px] border-gray-500 rounded-full py-2 justify-center flex items-center font-semibold mx-auto translate-y-[-50%] w-1/2 text-[16px]">
-                    <img className="w-1/5 px-1" src="src/assets/images/icon-add-to-cart.svg" alt="cart" /> Add to Cart
+                    <img className="w-1/5 px-1" src="/assets/images/icon-add-to-cart.svg" alt="cart" /> Add to Cart
                   </button>
                 )}
                 <figcaption className="my-6">
@@ -117,7 +117,7 @@ function App() {
               <span className="font-bold text-2xl">${total.toFixed(2)}</span>
             </div>
             <div className="m-auto bg-[#fcf9f7] flex items-center justify-center p-4 rounded-xl">
-              <img className="inline-block" src="src/assets/images/icon-carbon-neutral.svg" alt="carbon" />
+              <img className="inline-block" src="/assets/images/icon-carbon-neutral.svg" alt="carbon" />
               This is <span className="font-bold">&nbsp; carbon-neutral &nbsp;</span> delivery
             </div>
             <button onClick={() => setIsconformed(true)} className="bg-[#c73a0f] text-white w-full my-4 rounded-full p-2">
@@ -127,7 +127,7 @@ function App() {
 
         </div>: 
         <div>
-        <img className="m-auto" src="src\assets\images\illustration-empty-cart.svg" alt="empty cart" />
+        <img className="m-auto" src="\assets\images\illustration-empty-cart.svg" alt="empty cart" />
         <p className="text-red-700 text-center py-4">Your Added Items Will Appear Here.</p>
       </div>}
         
@@ -146,7 +146,7 @@ function App() {
             {cartItems.map((e) => (
               <div key={e} className="bg-[#fcf9f7] p-2 flex justify-between">
                 <div className="flex">
-                  <img className="w-16 rounded-xl" src={`src/${items[e].image.tablet}`} alt="food" />
+                  <img className="w-16 rounded-xl" src={items[e].image.tablet} alt="food" />
                   <div className="mx-4">
                     <h1 className="font-semibold">{items[e].name}</h1>
                     <p className="text-red-700 font-bold">
